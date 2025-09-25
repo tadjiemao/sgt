@@ -1,0 +1,351 @@
+
+    body {
+      font-family: Arial, serif; /* 设置页面使用 Arial 字体 */
+      display: flex; /* 使用 Flex 布局 */
+      justify-content: center; /* 水平居中 */
+      align-items: center; /* 垂直居中 */
+      height: 100vh; /* 设置页面高度为视窗高度的 100% */
+      margin: 0; /* 移除默认边距 */
+      background-image: url("html/background.jpg");
+	  background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+	  overflow-Y: hidden; /* 隐藏垂直滚动条 */
+    }
+
+	#video-background-container {
+		display: flex;
+		justify-content: center; /* 水平居中 */
+		align-items: center; /* 垂直居中 */
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		overflow: hidden; /* 防止超出 */
+	}
+
+	#video-background {
+		width: 100%; /* != width: auto; */
+		height: auto;
+		object-fit: cover; /* 让视频覆盖整个区域 */
+	}
+
+	#reminder-message {
+		position: absolute;
+		bottom: 50px;
+		right: 50px;
+		padding: 10px 20px;
+		background-color: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+		color: white;
+		font-size: 16px;
+		border-radius: 5px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+		z-index: 9999; /* 提高层级 */
+		opacity: 1; /* 初始可见 */
+	}
+
+	#skip-text {
+		position: absolute;
+		bottom: 20px; /* 距离屏幕底部 */
+		right: 20px; /* 距离屏幕右侧 */
+		padding: 10px 20px;
+		background-color: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+		color: white;
+		font-size: 16px;
+		border-radius: 5px; /* 圆角样式 */
+		cursor: pointer;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+		z-index: 9999; /* 确保文字显示在最前面 */
+		transition: background-color 0.3s ease, transform 0.2s ease;
+	}
+
+	#skip-text:hover {
+		background-color: black; /* 鼠标悬停时背景变黑 */
+		transform: scale(1.1); /* 鼠标悬停时文字放大 */
+	}
+
+    @media only screen and (max-width: 980px) {  
+	  #video-background {
+        display: none;
+      }
+	  
+	  #video-background-container {
+		z-index: -1000;
+	  }
+	  
+	  body{
+		background-image: url("html/backgroundMobile.png");  
+	  }
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   /* gap: 20px; */ /* 布局中项目之间的间隔 */
+    }
+
+    .player {
+      text-align: center; /* 文字居中 */
+   /* background: linear-gradient(to bottom, black, white); */ /* 渐变色 */
+      background-color: rgba(255, 255, 255, 0.8); /* 设置背景颜色为白色, 透明度为0.7 (1: 不透明; 0:透明)*/
+      padding: 40px; /* 设置内边距 */
+      border-radius: 10px; /* 设置边框圆角 */
+      box-shadow: 0 15px 15px rgba(105, 105, 105, 0.5);
+	  /*
+	  添加阴影效果:
+	  ·第一个参数（水平偏移量）是阴影水平偏移的距离。正数代表右偏移，负数代表左偏移。
+      ·第二个参数（垂直偏移量）是阴影垂直偏移的距离。正数代表向下偏移，负数代表向上偏移。
+      ·第三个参数（模糊半径）是阴影的模糊程度。值越大，阴影越模糊。为 0 时阴影不模糊。
+      ·第四个参数（阴影颜色）是阴影的颜色。
+	  */
+	  height: 610px;
+   /* backdrop-filter: blur(2px); /* 背景模糊处理 */
+      border: 5px solid #F5F5F5;
+    }
+
+    .album-cover {
+      width: 320px; /* 设置专辑封面宽度 */
+      height: 320px; /* 设置专辑封面高度 */
+      border-radius: 50%; /* 设置圆形边框 */
+      margin-bottom: 20px; /* 设置下边距 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+	  position: relative;
+	  z-index: 1;
+    }
+	
+	.album-cover-base {
+      width: 350px; /* 设置专辑封面宽度 */
+      height: 350px; /* 设置专辑封面高度 */
+      border-radius: 50%; /* 设置圆形边框 */
+      margin-bottom: 20px; /* 设置下边距 */
+	  background-color: grey;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+	  position: relative;
+	  top: -359px;
+	  z-index: 0;
+    }
+
+    .controls {
+      display: flex; /* 使用 Flex 布局 */
+      justify-content: center; /* 水平居中 */
+      gap: 20px; /* 设置按钮间距 */
+      margin-top: 20px; /* 设置上边距 */
+	  position: relative;
+	  top: -360px;
+    }
+
+    .controls button {
+      padding: 12px 24px; /* 设置按钮内边距 */
+      font-size: 16px; /* 设置按钮文字大小 */
+      cursor: pointer; /* 设置指针样式为手型 */
+      border: none; /* 移除边框 */
+      background-color: #f0ca4f; /* 设置按钮背景颜色 */
+      color: white; /* 设置文字颜色 */
+      border-radius: 5px; /* 设置边框圆角 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+      transition: background-color 0.3s ease-in-out, transform 0.2s; /* 添加过渡效果 */
+    }
+
+    .controls button:hover { /* 设置鼠标悬停时按钮的样式 */
+      background-color: #57cdf5; /* 设置鼠标悬停时按钮背景颜色 */
+      transform: translateY(-2px); /* 添加向上移动的动画效果 */
+	  box-shadow: 0 2px 4px rgba(105, 105, 105, 0.5);
+    }
+
+    .controls button:active { /* 添加按钮点击时的动画效果 */
+      box-shadow: 0 2px 4px rgba(105, 105, 105, 1.0);
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg); /* 设置初始旋转角度为0度 */
+      }
+      to {
+        transform: rotate(360deg); /* 设置最终旋转角度为360度 */
+      }
+    }
+
+    label {
+	  position: relative;
+	  top: -360px;	
+	}
+
+    .song-name {
+      font-size: 24px;
+      margin-top: 10px;
+	  font-family: Georgia, serif;
+	  visibility: hidden; /* 隐藏元素, 但占据空间 */
+	  position: relative;
+	  top: -360px;
+    }
+	
+	.progress {
+      width: 80%;
+      height: 10px;
+      background-color: #ccc;
+      border-radius: 5px;
+      margin: 20px auto;
+      overflow: hidden;
+	  visibility: hidden;
+	  transform: translateY(-17px);
+	  position: relative;
+	  top: -360px;
+	  border: 3px groove black;
+    }
+	
+    .progress:hover {
+      background-color: #57cdf5; /* 设置鼠标悬停时按钮背景颜色 */
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background-color: #696969;
+    }
+	
+    .playlist {
+      margin-top: 20px; /* 设置上边距 */
+    }
+
+    .playlist select {
+      padding: 10px; /* 设置选择框内边距 */
+      font-size: 16px; /* 设置选择框文字大小 */
+      border-radius: 5px; /* 设置选择框边框圆角 */
+	  background-color: #F5F5F5;
+	  color: black;
+	  position: relative;
+	  top: -360px;
+    }
+	
+	.time-display {
+      display: flex;
+      justify-content: space-between; /* 在主轴上将项目等距分布，使得首个项目位于容器的起始位置，最后一个项目位于容器的末尾位置，同时剩余项目之间平均分布，产生相等的空白间距。 */
+      margin-top: 5px;
+	  visibility: hidden;
+	  position: relative;
+	  top: -360px;
+    }
+
+    .time-display span {
+      font-size: 12px;
+      color: black;
+	  padding: 2px;
+	  border: 3px groove black;
+	  border-radius: 7px;
+	  background-color: #DCDCDC;
+	  transform: translateY(22px); /* 向下位移 */
+    }
+	
+    .hamburger-menu {
+      display: flex;
+      flex-direction: column;
+	  /* justify-content: space-between;
+	  项目在容器中按照两端对齐的方式排列，项目之间的间隔会平均分布，
+	  使得第一个项目位于容器的起始位置，最后一个项目位于容器的结束位置，
+	  中间的项目之间的间隔会被均匀地分布。 */
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 999;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+
+    @media only screen and (max-width: 980px) { 
+		.hamburger-menu {
+			width: 60px;
+			height: 40px;			
+		}
+	}
+
+    .line {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+	  /* 这段 CSS 代码是用于创建 CSS 属性 transform 的过渡效果。
+	  0.3s 指定了过渡的持续时间为 0.3 秒。
+	  这表示当元素的 transform 属性发生变化时，变化的过程会在 0.3 秒内完成。
+	  ease 是过渡效果的时间曲线，它指定了变化速度的规律。
+	  ease 表示在过渡开始和结束时速度较慢，中间时速度较快。 */
+      transition: transform 0.3s ease;
+    }
+
+    nav {
+	  border-radius: 0.7%;
+      display: none; /* 用于不占据空间地隐藏元素 */
+      position: fixed;
+      top: 60px;
+      left: 15px;
+      background-color: rgba(255, 255, 255, 0.8);
+	  border: 8px solid rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	  text-align: center;
+	  overflow-y: auto; /* 允许垂直滚动 */
+	  max-height: 750px; /* 限制高度，确保内容超过此高度后可以滚动 */
+    }
+
+    /* 菜单 (<nav>) 元素最初的状态是 display: none;，即不显示。
+	当点击汉堡菜单图标后，通过 JavaScript 中的 toggleMenu() 函数为菜单元素添加了 open 类。
+    而在 CSS 中，.open 是指选择具有 open 类的 nav 元素，并将其 display 设置为 block，
+	这样菜单就会显示出来。 */
+    nav.open {
+      display: block;
+    }
+
+    nav a {
+	  font-family: Aria, serif;
+      display: block;
+      margin-bottom: 5px;
+      padding: 5px; /* 用于设置元素内容区域与其边框之间的间距 */
+	  /* 通常，链接文本默认会带有下划线以表示其可点击性 */
+      text-decoration: none; /* 用于移除链接（<a> 标签）的下划线效果 */
+      color: #333;
+      border-bottom: 1px solid #696969;
+    }
+
+    nav a:last-child { /* 选择 <nav> 元素中的最后一个 <a> 子元素 */
+	  margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    nav a:hover {
+      color: #2F4F4F;
+	  transform: translateY(-2px);
+    }
+	
+    .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    .star {
+        position: absolute;
+        background: #fff;
+        border-radius: 50%;
+        animation: twinkle 1s infinite;
+    }
+    @keyframes twinkle {
+        0% { opacity: 0; transform: scale(0); }
+        50% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(0); }
+    }
+
+	/* 设置页脚样式 */
+    footer {
+		background-color: #f1f1f1; /* 背景颜色 */
+		text-align: center; /* 文本居中 */
+		padding: 10px 0; /* 内边距 */
+		position: fixed; /* 固定在页面底部 */
+		bottom: 0;
+		width: 100%; /* 占满宽度 */
+		font-size: 0.9em; /* 字体大小 */
+		color: #333; /* 文本颜色 */

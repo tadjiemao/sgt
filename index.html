@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="html/indexIco.ico" type="image/x-icon">
+<title>Sgt. Pepper's Lonely Hearts Club Band Introduction</title>
+<style>
+	body {
+		margin: 0;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #f0ca4f;
+		color: white;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	#text {
+		opacity: 0;
+		transition: opacity 2.5s ease-in;
+		font-size: clamp(14px, 4vw, 24px);
+		text-align: justify;
+		text-align-last: left;
+		max-width: 90%;
+		max-height: 80vh;
+		overflow-y: auto;
+		margin: 0 auto;
+		padding: 10px;
+	}
+
+	#enterBtn {
+		opacity: 0;
+		margin-top: 50px;
+		padding: 15px 40px;
+		font-size: 24px;
+		color: black;
+		background-color: #f0ca4f;
+		border: none;
+		cursor: pointer;
+		transition: transform 0.3s ease, opacity 1s;
+	}
+  
+	#enterBtn:hover {
+		transform: scale(1.2);
+	}
+
+	#enterBtn:active {
+		transform: scale(0.95);
+	}
+</style>
+</head>
+<body>
+
+<div id="text">　　Before Sgt. Pepper, no one seriously thought of rock music as actual art. That all changed in 1967, though, when John, Paul, George and Ringo (with "A Little Help" from their friend, producer George Martin) created an undeniable work of art which remains, after 30-plus years, one of the most influential albums of all time. From Lennon's evocative word/sound pictures (the trippy "Lucy in the Sky With Diamonds," the carnival-like "Being for the Benefit of Mr. Kite") and McCartney's music hall-styled "When I'm 64," to Harrison's Eastern-leaning "Within You Without You," and the avant-garde mini-suite, "A Day in the Life," Sgt. Pepper was a milestone for both '60s music and popular culture. --Billy Altman</div>
+<button id="enterBtn">E N T E R</button>
+
+<script>
+  const text = document.getElementById('text');
+  const button = document.getElementById('enterBtn');
+
+  window.onload = () => {
+    text.style.opacity = 1;
+
+    setTimeout(() => {
+      button.style.opacity = 1;
+    }, 5000);
+  };
+
+  button.addEventListener('click', () => {
+    text.style.transition = 'opacity 1s';
+    text.style.opacity = 0;
+    button.style.transition = 'opacity 1s';
+    button.style.opacity = 0;
+
+    setTimeout(() => {
+      window.location.href = 'player.html';
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>

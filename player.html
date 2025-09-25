@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <link rel="icon" href="html/playerIco.ico" type="image/x-icon">
+  <title>Sgt. Pepper's Lonely Hearts Club Band Music Player</title> <!-- 一般这里写唱片专辑名称 -->
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+
+
+<body>
+
+<div class="stars"></div>
+
+ <div class="container">
+  <div class="player">
+    <div>
+    <img class="album-cover" src="html/default.png" alt="Album Cover">
+  	<div><img class="album-cover-base" src="html/disco.png" alt="Album Cover Base"></div></div>
+    <audio id="audio"></audio>
+	<div class="song-name" id="songName"></div> <!-- 添加显示歌曲名称的元素 -->
+	
+	<div class="time-display" id="timeDisplay">
+      <span class="current-time">0:00</span>
+      <span class="total-time">0:00</span>
+    </div>	
+	
+	<div id="video-background-container">
+		<video id="video-background" autoplay muted> <!-- 这个视频元素的属性设置了 自动播放 (autoplay) 和 静音 (muted) -->
+		  <source src="media/Sgt. Pepper's Lonely Hearts Club Band - Trailer.mp4" type="video/mp4">
+		</video>
+	</div>
+	
+    <div class="progress" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="controls">
+      <button onclick="previousSong()">Previous</button>
+      <button onclick="playPauseMusic()">Play/Pause</button>
+      <button onclick="stopMusic()">Stop</button>
+      <button onclick="nextSong()">Next</button>
+    </div>
+	
+	<!-- 
+	value: 值
+	for: 相关联
+	label: 描述
+  	-->
+    <div class="playlist">
+      <label for="songList">Select song：</label>
+      <select id="songList" onchange="changeSong()">
+        <option value="0">01 - Sgt. Pepper's Lonely Hearts Club Band</option>
+        <option value="1">02 - With a Little Help From My Friends</option>
+        <option value="2">03 - Lucy In the Sky With Diamonds</option>
+        <option value="3">04 - Getting Better</option>
+		<option value="4">05 - Fixing a Hole</option>
+		<option value="5">06 - She's Leaving Home</option>
+		<option value="6">07 - Being For the Benefit of Mr. Kite!</option>
+		<option value="7">08 - Within You Without You</option>
+		<option value="8">09 - When I'm Sixty-Four</option>
+		<option value="9">10 - Lovely Rita</option>
+		<option value="10">11 - Good Morning Good Morning</option>
+		<option value="11">12 - Sgt. Pepper's Lonely Hearts Club Band (Reprise)</option>
+		<option value="12">13 - A Day In the Life</option>
+		<option value="13">14 - Sgt. Pepper's Lonely Hearts Club Band (Take 9 and Speech)</option>
+		<option value="14">15 - With a Little Help From My Friends (Take 1 , False Start and Take 2 , Instrumental)</option>
+		<option value="15">16 - Lucy In the Sky With Diamonds (Take 1)</option>
+		<option value="16">17 - Getting Better (Take 1 , Instrumental and Speech at the End)</option>
+		<option value="17">18 - Fixing a Hole (Speech and Take 3)</option>
+		<option value="18">19 - She's Leaving Home (Take 1 , Instrumental)</option>
+		<option value="19">20 - Being For the Benefit of Mr. Kite! (Take 4)</option>
+		<option value="20">21 - Within You Without You (Take 1 , Indian Instruments)</option>
+		<option value="21">22 - When I'm Sixty-Four (Take 2)</option>
+		<option value="22">23 - Lovely Rita (Speech and Take 9)</option>
+		<option value="23">24 - Good Morning Good Morning (Take 8)</option>
+		<option value="24">25 - Sgt. Pepper's Lonely Hearts Club Band (Reprise) [Speech and Take 8]</option>
+		<option value="25">26 - A Day In the Life (Take 1 With Hums)</option>
+		<option value="26">27 - Strawberry Fields Forever (Take 7)</option>
+		<option value="27">28 - Strawberry Fields Forever (Take 26)</option>
+		<option value="28">29 - Strawberry Fields Forever (Stereo Mix 2015)</option>
+		<option value="29">30 - Penny Lane (Take 6 , Instrumental)</option>
+		<option value="30">31 - Penny Lane (Stereo Mix 2017)</option>
+      </select>
+    </div>
+  </div>
+ </div>
+ 
+   <div class="hamburger-menu" onclick="toggleMenu()">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <nav id="menu">
+    <!-- 
+	  这段代码是一个超链接 <a>，它用于创建指向网页或网站的链接。
+	  比如说，href属性指定了链接的目标网址为 https://www.google.com，
+	  target="_blank"部分是一个属性，用于指示链接在新的浏览器窗口或标签页中打开。
+	-->
+    <a href="media/Sgt. Pepper's Lonely Hearts Club Band - Booklet.pdf" target="_blank">Booklet</a>
+    <a href="media/Sgt. Pepper's Lonely Hearts Club Band - Deluxe Booklet.pdf" target="_blank">Deluxe Booklet</a>
+  </nav>
+  
+<!-- 页脚 -->
+<footer>
+    &copy; Web Designer : Nocti-Cat <!-- &copy;符号: 显示版权符号（©） -->
+</footer> 
+  
+<script src="script.js"></script>
+  
+</body>
+
+</html>
