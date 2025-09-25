@@ -43,11 +43,13 @@
 		transition: transform 0.3s ease, opacity 1s;
 	}
   
+	@keyframes breathing {
+		0%   { transform: scale(1); }
+		50%  { transform: scale(1.1); }
+		100% { transform: scale(1); }
+	}  
+  
 	#enterBtn:hover {
-		transform: scale(1.2);
-	}
-
-	#enterBtn:active {
 		transform: scale(0.95);
 	}
 </style>
@@ -55,7 +57,7 @@
 <body>
 
 <div id="text">　　Before Sgt. Pepper, no one seriously thought of rock music as actual art. That all changed in 1967, though, when John, Paul, George and Ringo (with "A Little Help" from their friend, producer George Martin) created an undeniable work of art which remains, after 30-plus years, one of the most influential albums of all time. From Lennon's evocative word/sound pictures (the trippy "Lucy in the Sky With Diamonds," the carnival-like "Being for the Benefit of Mr. Kite") and McCartney's music hall-styled "When I'm 64," to Harrison's Eastern-leaning "Within You Without You," and the avant-garde mini-suite, "A Day in the Life," Sgt. Pepper was a milestone for both '60s music and popular culture. --Billy Altman</div>
-<button id="enterBtn">E N T E R</button>
+<button id="enterBtn">ＥＮＴＥＲ</button>
 
 <script>
   const text = document.getElementById('text');
@@ -66,6 +68,7 @@
 
     setTimeout(() => {
       button.style.opacity = 1;
+	  button.style.animation = "breathing 2.5s ease-in-out infinite";
     }, 5000);
   };
 
@@ -74,6 +77,7 @@
     text.style.opacity = 0;
     button.style.transition = 'opacity 1s';
     button.style.opacity = 0;
+	button.style.animation = "none";
 
     setTimeout(() => {
       window.location.href = 'player.html';
