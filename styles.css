@@ -66,15 +66,16 @@
 		transform: scale(1.1); /* 鼠标悬停时文字放大 */
 	}
 
-    @media only screen and (max-width: 980px) {  
-	  #video-background-container {
-		z-index: -1000;
-	  }	
-	
+    @media only screen and (max-width: 980px) {
+/*		
 	  #video-background {
         display: none;
       }
- 
+	  
+	  #video-background-container {
+		z-index: -1000;
+	  }
+*/	  
 	  body{
 		background-image: url("html/backgroundMobile.png");  
 		background-position: center bottom;
