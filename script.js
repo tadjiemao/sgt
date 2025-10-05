@@ -1,4 +1,3 @@
-  
     const audio = document.getElementById('audio');
     const albumCover = document.querySelector('.album-cover');
     const songNameElement = document.getElementById('songName');
