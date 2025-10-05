@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <link rel="icon" href="html/playerIco.ico" type="image/x-icon">
   <title>Sgt. Pepper's Lonely Hearts Club Band Music Player</title> <!-- 一般这里写唱片专辑名称 -->
-  <link rel="stylesheet" href="styles.css">
-  
+  <link rel="stylesheet" href="styles.css"> 
 </head>
 
-
 <body>
-
-<div class="stars"></div>
+ <div class="stars"></div>
 
  <div class="container">
   <div class="player">
     <div>
-    <img class="album-cover" src="html/default.png" alt="Album Cover">
-  	<div><img class="album-cover-base" src="html/disco.png" alt="Album Cover Base"></div></div>
+		<img class="album-cover" src="html/default.png" alt="Album Cover">
+		<div><img class="album-cover-base" src="html/disco.png" alt="Album Cover Base"></div>
+	</div>
     <audio id="audio"></audio>
 	<div class="song-name" id="songName"></div> <!-- 添加显示歌曲名称的元素 -->
 	
@@ -91,13 +86,13 @@
   </div>
  </div>
  
-   <div class="hamburger-menu" onclick="toggleMenu()">
+ <div class="hamburger-menu" onclick="toggleMenu()">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-  </div>
+ </div>
 
-  <nav id="menu">
+ <nav id="menu">
     <!-- 
 	  这段代码是一个超链接 <a>，它用于创建指向网页或网站的链接。
 	  比如说，href属性指定了链接的目标网址为 https://www.google.com，
@@ -119,17 +114,15 @@
 	<a href="lyrics/12 - Sgt. Pepper's Lonely Hearts Club Band (Reprise).txt" target="_blank">Sgt. Pepper's Lonely Hearts Club Band (Reprise)</a>
 	<a href="lyrics/13 - A Day In The Life.txt" target="_blank">A Day In The Life</a>
 	<a href="lyrics/14 - Strawberry Fields Forever.txt" target="_blank">Strawberry Fields Forever</a>
-	<a href="lyrics/15 - Penny Lane.txt" target="_blank">Penny Lane</a>
-	
-  </nav>
+	<a href="lyrics/15 - Penny Lane.txt" target="_blank">Penny Lane</a>	
+ </nav>
   
-<!-- 页脚 -->
-<footer>
-    &copy; Web Designer : Nocti-Cat <!-- &copy;符号: 显示版权符号（©） -->
-</footer> 
+ <!-- 页脚 -->
+ <footer>
+     &copy; Web Designer : Nocti-Cat <!-- &copy;符号: 显示版权符号（©） -->
+ </footer> 
   
-<script src="script.js"></script>
-  
+ <script src="script.js"></script> 
 </body>
 
 </html>
